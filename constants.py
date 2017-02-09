@@ -1,4 +1,4 @@
-from platform import system,architecture
+from platform import system, architecture
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
@@ -18,13 +18,16 @@ GECKO_MAC_DRIVER = './drivers/gecko_0_14_0/mac/geckodriver'
 GECKO_WINDOWS_DRIVER_32 = './drivers/gecko_0_14_0/win_32/geckodriver.exe'
 GECKO_WINDOWS_DRIVER_64 = './drivers/gecko_0_14_0/win_64/geckodriver.exe'
 
+
 def get_chrome_driver():
     """Return a Chrome driver"""
     return webdriver.Chrome(get_chrome_driver_location())
 
+
 def get_phantom_driver():
     """Return a PhantomJS headless driver"""
     return webdriver.PhantomJS(get_phantom_driver_location())
+
 
 def get_firefox_driver():
     """Return a Firefox driver ** NOT WORKING"""
@@ -35,6 +38,7 @@ def get_firefox_driver():
     return webdriver.Firefox(firefox_profile=profile,
                              capabilities=firefox_capabilities,
                              executable_path=get_gecko_driver_location())
+
 
 def get_chrome_driver_location():
     """Detect the os version & architecture. Return the correct chrome driver string location."""
@@ -52,6 +56,7 @@ def get_chrome_driver_location():
         print 'Your OS version "' + s + '" is not supported'
         return ''
 
+
 def get_phantom_driver_location():
     """Detect the os version & architecture. Return the correct phantom driver string location."""
     s = system().lower()
@@ -67,6 +72,7 @@ def get_phantom_driver_location():
     else:
         print 'Your OS version "' + s + '" is not supported'
         return ''
+
 
 def get_gecko_driver_location():
     """Detect the os version & architecture. Return the correct firefox driver string location."""
